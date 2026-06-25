@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+    string itemName;
+    int quantity;
+    float cost;
+
+    cout << "Enter the name of the item: ";
+
+    cin >> itemName;
+
+    cout << "Enter the quantity of the item: ";
+
+    cin >> quantity;
+
+    cout << "Enter the cost of the item: ";
+
+    cin >> cost;
+
+    cout << "The total cost for " << quantity << " " << itemName << " is $" << (cost * quantity);
+
+    return 0;
+}
+
