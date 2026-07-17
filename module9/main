@@ -1,0 +1,91 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class User {
+protected:
+    string username;
+
+public:
+    User(string name) {
+        username = name;
+    }
+
+    virtual void accessLevel() {
+        cout << username << " has general user access." << endl;
+    }
+
+    virtual ~User() {}
+};
+
+class Employee : public User {
+public:
+    Employee(string name) : User(name) {}
+
+    void accessLevel() override {
+        cout << "Employee: " << username << endl;
+        cout << "Access: View inventory." << endl;
+    }
+};
+
+class Manager : public User {
+public:
+    Manager(string name) : User(name) {}
+
+    void accessLevel() override {
+        cout << "Manager: " << username << endl;
+        cout << "Access: View and update inventory." << endl;
+    }
+};
+
+class Admin : public User {
+public:
+    Admin(string name) : User(name) {}
+
+    void accessLevel() override {
+        cout << "Admin: " << username << endl;
+        cout << "Access: Full access: Add, update, and delete inventory." << endl;
+    }
+};
+
+int main() {
+    string name;
+    int choice;
+
+    cout << "Company Inventory System" << endl;
+
+    cout << "Enter name: ";
+    cin >> name;
+
+    cout << "\nSelect User Type" << endl;
+    cout << "1. Employee" << endl;
+    cout << "2. Manager" << endl;
+    cout << "3. Admin" << endl;
+    cout << "Enter choice: ";
+    cin >> choice;
+
+    User* user = nullptr;
+
+    switch (choice) {
+    case 1:
+        user = new Employee(name);
+        break;
+    case 2:
+        user = new Manager(name);
+        break;
+    case 3:
+        user = new Admin(name);
+        break;
+    default:
+        cout << "Invalid choice!" << endl;
+        return 0;
+    }
+
+    cout << "\nUser Information" << endl;
+    user->accessLevel();
+
+    delete user;
+
+    return 0;
+}
+
