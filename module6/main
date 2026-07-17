@@ -1,0 +1,111 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+string itemName;
+
+void addItem()
+{
+    int userAdd;
+    cout << "What item would you like to add?\n";
+    cout << "1: Apples\n";
+    cout << "2: Bananas\n";
+    cout << "3: Carrots\n";
+    cin >> userAdd;
+
+    if (userAdd == 1)
+    {
+        itemName = "Apples";
+        cout << "Apples added to cart\n";
+    }
+
+    else if (userAdd == 2)
+    {
+        itemName = "Bananas";
+        cout << "Bananas added to cart\n";
+    }
+
+    else if (userAdd == 3)
+    {
+        itemName = "Carrots";
+        cout << "Carrots added to cart\n";
+    }
+    else
+    {
+        cout << "Invalid\n";
+        return;
+    }
+}
+void saveCart()
+{
+    ofstream outFile("cart.txt");
+
+    outFile << itemName;
+
+    outFile.close();
+
+    cout << "Cart saved\n";
+}
+
+void loadCart()
+{
+    ifstream inFile("cart.txt");
+    inFile >> itemName;
+    inFile.close();
+    cout << "Cart loaded\n";
+    cout << itemName << " are in cart\n";
+}
+
+void viewCheckout()
+{
+
+    cout << "Checkout: \n";
+    cout << "Item: " << itemName << endl;
+
+}
+
+int main()
+{
+    int choice = 0;
+
+    while (choice != 5)
+    {
+        cout << "Menu\n";
+        cout << "1: Add Item\n";
+        cout << "2: Save Cart\n";
+        cout << "3: Load Cart\n";
+        cout << "4: View Checkout\n";
+        cout << "5: Exit\n";
+        cout << "Choice: ";
+
+        cin >> choice;
+
+        if (choice == 1)
+        {
+            addItem();
+        }
+        else if (choice == 2)
+        {
+            saveCart();
+        }
+        else if (choice == 3)
+        {
+            loadCart();
+        }
+        else if (choice == 4)
+        {
+            viewCheckout();
+        }
+        else if (choice == 5)
+        {
+            cout << "Exiting\n";
+        }
+        else
+        {
+            cout << "Invalid choice.\n";
+        }
+    }
+
+    return 0;
+}
