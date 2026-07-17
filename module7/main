@@ -1,0 +1,71 @@
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <vector>
+
+#include "dataset.h"
+
+using namespace std;
+
+int main()
+{
+    ifstream file("dataset.csv");
+
+    // Opens file
+
+    if (!file.is_open())
+    {
+        cout << "Could not open dataset.csv" << endl;
+        return 1;
+    }
+
+    // Check if the file opened
+
+    cout << "File opened successfully!\n\n";
+
+    vector<Sale> sales;
+
+    string line;
+
+    // Skip header row
+    getline(file, line);
+
+    while (getline(file, line) && sales.size() < 10)
+    {
+	// Read each row and use variables to store data
+        stringstream ss(line);
+
+        string saleID;
+        string saleDate;
+        string gpuModel;
+        string region;
+        string unitsSold;
+        string revenue;
+
+        getline(ss, saleID, ',');
+        getline(ss, saleDate, ',');
+        getline(ss, gpuModel, ',');
+        getline(ss, region, ',');
+        getline(ss, unitsSold, ',');
+        getline(ss, revenue, ',');
+
+        Sale sale(saleID, saleDate, gpuModel,
+            region, unitsSold, revenue);
+
+        sales.push_back(sale);
+    }
+
+    file.close();
+
+    cout << "First 10 Records\n";
+    cout << " \n\n";
+
+    for (int i = 0; i < sales.size(); i++)
+    {
+        sales[i].display();
+    }
+
+    system("pause");
+    return 0;
+}
