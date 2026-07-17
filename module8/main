@@ -1,0 +1,87 @@
+#include "PatientFunctions.h"
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+
+    Patient * patients = new Patient[100];
+
+    int count = 0;
+    int choice;
+
+
+    loadPatients(patients, count);
+
+    do
+    {
+        cout << "Hospital Patient System\n";
+        cout << "1. Add Patient\n";
+        cout << "2. Display All Patients\n";
+        cout << "3. Search Patient by ID\n";
+        cout << "4. Update Patient Information\n";
+        cout << "5. Save Patients to File\n";
+        cout << "6. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            addPatient(patients, count);
+            break;
+
+        case 2:
+            displayPatients(patients, count);
+            break;
+
+        case 3:
+        {
+            int searchID;
+
+            cout << "Enter Patient ID to search: ";
+            cin >> searchID;
+
+            int result = binarySearch(patients, count, searchID);
+
+            if (result != -1)
+            {
+                cout << "\nPatient Found\n";
+                cout << "ID: " << patients[result].id << endl;
+                cout << "Name: " << patients[result].name << endl;
+                cout << "Age: " << patients[result].age << endl;
+                cout << "Gender: " << patients[result].gender << endl;
+                cout << "Diagnosis: " << patients[result].diagnosis << endl;
+            }
+            else
+            {
+                cout << "Patient not found.\n";
+            }
+
+            break;
+        }
+
+        case 4:
+            updatePatient(patients, count);
+            break;
+
+        case 5:
+            savePatients(patients, count);
+            break;
+
+        case 6:
+            cout << "Good Bye!\n";
+            break;
+
+        default:
+            cout << "Invalid choice. Try again.\n";
+        }
+
+    } while (choice != 6);
+
+
+    delete[] patients;
+
+    return 0;
+}
