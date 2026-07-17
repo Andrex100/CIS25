@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    //Fixed variable definitions with comma seperation
+    float n1, n2, n3;
+
+
+    cout << "Enter three numbers: ";
+
+    //Switched to >> as opposed to <<
+    cin >> n1 >> n2 >> n3;
+
+    //Nested if statements and corrected printing logic and missing syntax
+    if (n1 > n2)
+    {
+        if (n1 > n3)
+        {
+            cout << "The largest number is " << n1;
+        }
+        else
+        {
+            //Fixed to display n3 as largest
+            cout << "The largest number is " << n3;
+        }
+    }
+    else
+    {
+        if (n2 > n3)
+        {
+            //Fixed to display n2 as largest
+            cout << "The largest number is " << n2;
+        }
+        else
+        {
+            //Fixed to display n3 as largest
+            cout << "The largest number is " << n3;
+        }
+    }
+    return 0;
+}
