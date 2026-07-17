@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    
+    int choice;
+
+    cout << "Menu\n";
+    cout << "1: A\n";
+    cout << "2: B\n";
+    cout << "3: C\n";
+    cout << "Enter your choice: ";
+
+    cin >> choice;
+
+    if (choice == 1) {
+    
+        cout << "You chose A";
+        
+    }
+
+    else if (choice == 2) {
+
+        cout << "You chose B";
+        
+    }
+
+    else if (choice == 3) {
+
+        cout << "You chose C";
+        
+    }
+    else {
+        cout << "Invalid choice.";
+        
+    }
+
+    return 0;
+
+
+
+
+}
