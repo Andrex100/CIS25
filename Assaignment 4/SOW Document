@@ -1,1 +1,22 @@
+Scope of Work (SOW) -
+Build an application or add a unique twist on a common application. The application can be a game, a business support program, or robot to give a few examples. Projects should focus on creating C++ or Swift applications that utilize long-term data storage.
+Please submit your Scope of Work Document detailing the application you plan to complete.   You last assignment will implement your plan
+Student Project – Scope of Work (SOW)
+Project Title: Car Garage Manager
+Student Name: Andrew Bouris
+Date: 7/16/25
+
+1. Project Overview
+My Car Garage Manager will be a basic program that could be used by car dealerships or people with large garages to organize data of their vehicles. 
+For this program specifically, users will be able to add, remove, search for, and display vehicles, and all data will be saved to a text file so it is available to see the next time the program is opened.
+
+2. Features
+Add a new car
+Display all cars
+Display information about car
+Search by make or model
+Remove a car
+Save data to a file
+Load data from a file
+
 
